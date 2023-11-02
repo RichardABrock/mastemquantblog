@@ -1,0 +1,44 @@
+---
+title: "MASTEMQuant"
+author: "Richard Brock and Peter Kemp"
+format: html
+editor: visual
+---
+
+## MA STEM Education Quantitative methods in educational research - student projects
+
+This is a page to show student work from the MA STEM Quantitative Methods in Educational Research Module
+
+```{r include=FALSE, message=FALSE}
+#| echo: false
+#| eval: true
+#| message: false
+
+options(repos=c(CRAN="http://cran.us.r-project.org"))
+install.packages("tidyverse")
+install.packages("arrow")
+
+library(tidyverse, quietly = TRUE)
+library(arrow, quietly = TRUE)
+
+PISA_2018<-read_parquet("/Users/k1765032/Library/CloudStorage/GoogleDrive-richardandrewbrock@gmail.com/.shortcut-targets-by-id/1c3CkaEBOICzepArDfjQUP34W2BYhFjM4/PISR/Data/PISA/2018/PISA_2018_student.parquet")
+```
+
+## Example code
+
+```{r}
+#| echo: true
+#| eval: true
+# Create a UK subset
+PISAUK<-PISA_2018%>%
+  filter(CNT=="United Kingdom")%>%
+  select(PV1SCIE, PV1MATH)
+# Plot scores, but add them to bins to reduce over ploting
+# Set a colour scale to show number in bins
+ggplot(PISAUK, aes(x=PV1MATH, y=PV1SCIE))+
+  stat_bin2d(bins = 90) +
+  scale_fill_gradient(low = "lightblue", high = "red", limits = c(0, 80))+
+  ggtitle("UK PISA Science and Mathematics scores")+
+  labs(x="Mathematics score", y="Science Score")
+
+```
