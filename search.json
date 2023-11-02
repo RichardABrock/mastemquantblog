@@ -4,21 +4,21 @@
     "href": "index.html",
     "title": "mastemquantblog",
     "section": "",
-    "text": "MASTEMQuant\n\n\n\n\n\n\n\n\n\n\n\n\nRichard Brock and Peter Kemp\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "MASTEMQuant\n\n\n\n\n\n\n\n\n\n\n\n\nRichard Brock and Peter Kemp\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To STEM MA Quantitative methods in Educational Research Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nRichard Brock and Peter Kemp\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "title": "Welcome To STEM MA Quantitative methods in Educational Research Blog",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "We will use this blog to display student work from the MA STEM Quantitative methods in Educational Research\n\nworld_data &lt;- map_data(map=\"world\")\n\n# Create a dataframe of mean PISA science scores, and rename CNT to region\n# for the leftjoin mergining of dataframes\nWorldSci&lt;-PISA_2018%&gt;%\n  select(CNT, PV1SCIE)%&gt;%\n  group_by(CNT)%&gt;%\n  summarise(meanSci=mean(PV1SCIE, na.rm=TRUE))%&gt;%\n  rename(region=CNT)\n\nlevels(WorldSci$region)[levels(WorldSci$region)==\"United Kingdom\"] &lt;- \"UK\"\nlevels(WorldSci$region)[levels(WorldSci$region)==\"United States\"] &lt;- \"USA\"\nlevels(WorldSci$region)[levels(WorldSci$region)==\"B-S-J-Z (China)\"] &lt;- \"China\"\nlevels(WorldSci$region)[levels(WorldSci$region)==\"Russian Federation\"] &lt;- \"Russia\"\n\n\nViet&lt;-PISA_2018%&gt;%\n  select(PV1SCIE, CNT)%&gt;%\n  filter(CNT==\"Vietnam\")\n  \n# Add the country latitude and longitude data to the PISA scores\nWorldSci&lt;-left_join(world_data, WorldSci, by=\"region\")\n# Use geom_map to plot the basic world map (fill is white, line colour is black)\n# Use geom_polygon to plot the PISA data\n# Add a colour scale\n\nLabels&lt;-WorldSci%&gt;%\n  group_by(region)%&gt;%\n  summarise(meanSci=mean(meanSci), lat=mean(lat), long=mean(long))%&gt;%\n  na.omit()\n\n\n\nggplot(data = WorldSci, aes(x=long, y=lat, group=group)) +\n  geom_map(data=world_data, map=world_data, aes(map_id=region), fill=\"white\", colour=\"black\")+\n  geom_polygon(aes(fill=meanSci)) +\n  scale_fill_viridis_c(option = \"viridis\")+\n  geom_text_repel(data=Labels, inherit.aes = F, aes(x=long, y=lat,label=region))\n\nWarning: ggrepel: 41 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps"
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+    "text": "The blog for the KCL MA STEM Quantitative Methods in Educational Research Module. This blog will display student work produced in R."
   },
   {
     "objectID": "posts/test post/MASTEMquant.html",
@@ -40,12 +40,5 @@
     "title": "MASTEMQuant",
     "section": "Example code",
     "text": "Example code\n\n# Create a UK subset\nPISAUK&lt;-PISA_2018%&gt;%\n  filter(CNT==\"United Kingdom\")%&gt;%\n  select(PV1SCIE, PV1MATH)\n# Plot scores, but add them to bins to reduce over ploting\n# Set a colour scale to show number in bins\nggplot(PISAUK, aes(x=PV1MATH, y=PV1SCIE))+\n  stat_bin2d(bins = 90) +\n  scale_fill_gradient(low = \"lightblue\", high = \"red\", limits = c(0, 80))+\n  ggtitle(\"UK PISA Science and Mathematics scores\")+\n  labs(x=\"Mathematics score\", y=\"Science Score\")"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this blog"
   }
 ]
