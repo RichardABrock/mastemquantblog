@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "MASTEMQuantblog"
+  title: "mastemquantblog"
   navbar:
     right:
       - about.qmd
