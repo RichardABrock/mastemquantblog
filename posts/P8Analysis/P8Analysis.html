@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Richard Brock and Peter Kemp">
+<meta name="dcterms.date" content="2023-11-06">
 
 <title>mastemquantblog - P8Data20222023</title>
 <style>
@@ -147,7 +149,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Richard Brock and Peter Kemp </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 6, 2023</p>
+      </div>
+    </div>
     
       
     </div>
@@ -262,13 +276,14 @@ See problems(...) for more details.</code></pre>
 <span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ADMPOL=</span><span class="fu">ifelse</span>(ADMPOL<span class="sc">==</span><span class="st">"NR"</span>,<span class="st">"Not recorded"</span>,</span>
 <span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">ifelse</span>(ADMPOL<span class="sc">==</span><span class="st">"SEL"</span>,<span class="st">"Selective"</span>, </span>
 <span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">ifelse</span>(ADMPOL<span class="sc">==</span><span class="st">"NSE"</span>,<span class="st">"Not selective"</span>, <span class="cn">NA</span>))))</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>plotdata<span class="sc">$</span>PTFSM6CLA1A<span class="ot">&lt;-</span><span class="fu">parse_number</span>(plotdata<span class="sc">$</span>PTFSM6CLA1A)</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatterhist</span>(<span class="at">data=</span>plotdata, <span class="at">y=</span><span class="st">"P8MEA"</span>, <span class="at">x=</span><span class="st">"PTFSM6CLA1A"</span>,</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span><span class="st">"ADMPOL"</span>, <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>,</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>              <span class="at">margin.params =</span> <span class="fu">list</span>(<span class="at">fill =</span> <span class="st">"ADMPOL"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.2</span>),</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">ggtheme =</span> <span class="fu">theme_bw</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>plotdata<span class="sc">$</span>P8MEA<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(plotdata<span class="sc">$</span>P8MEA)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>plotdata<span class="sc">$</span>PTFSM6CLA1A<span class="ot">&lt;-</span><span class="fu">parse_number</span>(plotdata<span class="sc">$</span>PTFSM6CLA1A)</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggscatterhist</span>(<span class="at">data=</span>plotdata, <span class="at">y=</span><span class="st">"P8MEA"</span>, <span class="at">x=</span><span class="st">"PTFSM6CLA1A"</span>,</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span><span class="st">"ADMPOL"</span>, <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>,</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">margin.params =</span> <span class="fu">list</span>(<span class="at">fill =</span> <span class="st">"ADMPOL"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.2</span>),</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>              <span class="at">ggtheme =</span> <span class="fu">theme_bw</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="P8Analysis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
