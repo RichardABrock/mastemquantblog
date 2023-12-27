@@ -1,0 +1,46 @@
+---
+title: "PISA 2022 science and mathematics scores"
+author: "Richard Brock"
+format: html
+---
+
+## Patterns of science and mathematics achievement
+
+Correlation between mathematics and science scores in PISA 2022 data
+
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+# Load packages and data
+library(arrow)
+library(tidyverse)
+library(haven)
+library(ggrepel)
+
+
+# Load Student data files ----
+
+PISA_2022_student<-read_parquet("/Users/k1765032/Library/CloudStorage/OneDrive-King'sCollegeLondon/QERKCL_PISA/data/pisa/2022/PISA_student_2022.parquet")
+
+#Drop labels
+zap_label(PISA_2022_student)
+
+plotdata<-PISA_2022_student%>%
+  select(CNT, PV1SCIE, PV1MATH)%>%
+  group_by(CNT)%>%
+  summarise(MeanSci=mean(PV1SCIE, na.rm=TRUE),
+            MeanMath=mean(PV1MATH, na.rm=TRUE))
+
+plotdata<-plotdata%>%
+  mutate(colour=ifelse(CNT == "United Kingdom","red","skyblue"))%>%
+  mutate(label=ifelse(CNT == "United Kingdom","UK",""))%>%
+  mutate(alpha=ifelse(CNT == "United Kingdom",1,0.6))
+
+ggplot(plotdata, aes(x = MeanSci, y = MeanMath))+
+  geom_text_repel(label=plotdata$label)+
+  geom_point(colour = plotdata$colour, alpha=plotdata$alpha)+
+  geom_smooth(method=`lm`, se = FALSE)+
+  labs(x = "Mean Science Score", y = "Mean Math Score")
+
+```
