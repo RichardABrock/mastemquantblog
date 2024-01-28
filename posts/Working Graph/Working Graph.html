@@ -55,7 +55,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -290,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Which does show more clearly a negative correlation between times worked per week when times is less than 5. The correlation gets a little more noisy after that. I speculate this is because working more than 5 times per week would mean working more than every weekday, which might mean students answering the questionnaire with larger numbers may be defining a “working” period differently than those answering with smaller values or perhaps have misread the question making the data noisier for values over 5.</p>
-<p>One thing in discussion with Peter and Richard I realised was that this model while it takes account of differences in economic status by country, it does not take into account differences in socioeconomic status between students. It is completely plausible that even within a country poorer students might be having to work more than richer ones, and it is fairly established that students with lower socioeconomic status get lower scores on PISA tests (OECD, 2018). This might mean that all we are seeing in this graph is that effect, rather than any effect from working in a job. To remedy this we can adapt our model to control for socioeconomic status (<code>ESCS</code>).</p>
+<p>One thing in discussion with Peter and Richard I realised was that this model while it takes account of differences in economic status by country, it does not take into account differences in socioeconomic status between students. It is completely plausible that even within a country poorer students might be having to work more than richer ones, and it is fairly established that students with lower socioeconomic status get lower scores on PISA tests <span class="citation" data-cites="tessier2018equity">(<a href="#ref-tessier2018equity" role="doc-biblioref">Tessier 2018</a>)</span>. This might mean that all we are seeing in this graph is that effect, rather than any effect from working in a job. To remedy this we can adapt our model to control for socioeconomic status (<code>ESCS</code>).</p>
 </section>
 <section id="controling-for-socioeconomic-status-escs" class="level3">
 <h3 class="anchored" data-anchor-id="controling-for-socioeconomic-status-escs">CONTROLING FOR SOCIOECONOMIC STATUS (<code>ESCS</code>)</h3>
@@ -431,16 +450,17 @@ computed using a Wald t-distribution approximation.</code></pre>
 </div>
 <p>So, even when taking into account the household socioeconomic status there is a small but significant effect of a student having to work during the weekdays. This model explains 14% of the variance in <code>STU_REL_SCORE</code>. Combined with the discoveries above that <code>WORKPAY</code> has little correlation with <code>ESCS</code> we can be fairly confident in it’s effect on student outcomes.</p>
 <p>To summarise; maybe if I hadn’t worked at Homebase when I was 17 years old I’d have got an A in my chemistry A-level instead of a B.</p>
-</section>
-<section id="references" class="level3">
-<h3 class="anchored" data-anchor-id="references">REFERENCES</h3>
-<p>OECD. (2018). Equity in Education: Breaking Down Barriers to Social Mobility. OECD. https://doi.org/10.1787/9789264073234-en</p>
+
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-tessier2018equity" class="csl-entry" role="listitem">
+Tessier, Rebecca. 2018. <span>“Equity in Education: Breaking down Barriers to Social Mobility.”</span>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
