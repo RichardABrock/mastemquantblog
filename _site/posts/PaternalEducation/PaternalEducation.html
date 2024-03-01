@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Owen James-Gray">
+
+<title>mastemquantblog - Who’s Better Educated, Mum or Dad?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">mastemquantblog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Who’s Better Educated, Mum or Dad?</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Owen James-Gray </p>
+            </div>
+    </div>
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="mothers-and-fathers-occupations" class="level2">
+<h2 class="anchored" data-anchor-id="mothers-and-fathers-occupations">Mothers’ and fathers’ occupations</h2>
+<p>This post looks into the differences between mother’s and father’s education levels across the world. Do mothers or fathers have higher education levels. Do people tend to partner up with people who have a similar education level to themselves?</p>
+<p>PISA use the ISCED international educational comparison system <span class="citation" data-cites="internata">[@internata]</span>. PISA only ask about the first 4 education levels though, 0,1,2 and 3. The highest level, level 3, corresponds to having completed the country’s equivalent of high school. PISA split the level 3 grouping into 3.3 and 3.4. which relate to vocational and non-vocational education types both at high school level <span class="citation" data-cites="oecd2020a">[@oecd2020a]</span>.</p>
+<p>First let’s investigate the world distribution of education levels and answer our two questions about the world as a whole.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmosaic)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"/Users/k1765032/Library/CloudStorage/GoogleDrive-richardandrewbrock@gmail.com/.shortcut-targets-by-id/1c3CkaEBOICzepArDfjQUP34W2BYhFjM4/PISR/Data/PISA/2022/PISA_student_2022_subset.parquet"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>c5 <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ST005Q01JA)<span class="sc">&amp;!</span><span class="fu">is.na</span>(ST007Q01JA)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(CNT, ST005Q01JA, ST007Q01JA) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>c5 <span class="ot">&lt;-</span> <span class="fu">rename</span>(c5, <span class="at">MOTHERED =</span> ST005Q01JA, <span class="at">FATHERED =</span> ST007Q01JA)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(c5<span class="sc">$</span>MOTHERED) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Level 3.4"</span>, <span class="st">"Level 3.3"</span>, <span class="st">"Level 2"</span>, <span class="st">"Level 1"</span>, <span class="st">"No Completion"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(c5<span class="sc">$</span>FATHERED) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Level 3.4"</span>, <span class="st">"Level 3.3"</span>, <span class="st">"Level 2"</span>, <span class="st">"Level 1"</span>, <span class="st">"No Completion"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>c5<span class="sc">$</span>MOTHERED <span class="ot">&lt;-</span> <span class="fu">factor</span>(c5<span class="sc">$</span>MOTHERED, <span class="at">levels =</span> <span class="fu">rev</span>(<span class="fu">levels</span>(c5<span class="sc">$</span>MOTHERED)))</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>c5<span class="sc">$</span>FATHERED <span class="ot">&lt;-</span> <span class="fu">factor</span>(c5<span class="sc">$</span>FATHERED, <span class="at">levels =</span> <span class="fu">rev</span>(<span class="fu">levels</span>(c5<span class="sc">$</span>FATHERED)))</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> c5, <span class="sc">~</span> MOTHERED <span class="sc">+</span> FATHERED)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>conttab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               FATHERED
+MOTHERED        No Completion Level 1 Level 2 Level 3.3 Level 3.4
+  No Completion          7742    3846    3205       969      3225
+  Level 1                3132   12452    7364      2075      6945
+  Level 2                3122    7437   38007      8766     21953
+  Level 3.3              1131    2479    9878     58929     24510
+  Level 3.4              3719    6854   29751     40710    250006</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> c5) <span class="sc">+</span>     </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(MOTHERED, FATHERED), <span class="at">fill =</span> MOTHERED)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"MOTHERED"</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"FATHERED"</span>)<span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)<span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis</span>(<span class="at">discrete =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PaternalEducation_files/figure-html/mosaic-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>So on average pupils’ fathers’ distribution of level of education is generally higher than their mothers’ distribution however the largest groupings are for situations where the father’s and mother’s education is the same. So worldwide we have a visible education inequality between women and men, but also we have the interesting finding that people tend to partner up with those that have similar education levels to themselves.</p>
+<p>Given the highest level measured is high school this seems to make sense, it is easy to imagine people meeting each other and creating their social networks in school, leaving school early together or staying in school for longer together and then eventually pairing up with people from those exact social networks, at least that’s my hypothesis, further investigation would be needed; perhaps PISA could include a question on their next parental survey: “sooooo, how’d you two meet??”</p>
+<p>The mosaic plot does make the distributions look significantly different, but let’s test for significance anyway and see just how significant the finding is.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(conttab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  conttab
+X-squared = 392771, df = 16, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>p = 2.2e-16 which is far less than 0.05 so the result is statistically significant, however the level of education variable is ordinal, Chi-Square will work on ordinal data but a Kruskal Wallis test is arguably more appropriate as it takes into account the ordinal nature of the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(<span class="at">data =</span> c5, MOTHERED <span class="sc">~</span> FATHERED)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Kruskal-Wallis rank sum test
+
+data:  MOTHERED by FATHERED
+Kruskal-Wallis chi-squared = 158276, df = 4, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>p-value = 2.2e-16 which again is far less than 0.05 so the result is statistically significant. This means mothers’ and fathers’ distributions of education level are not equal there is a significant variance between education levels.</p>
+</section>
+<section id="extension---analysis-by-country" class="level2">
+<h2 class="anchored" data-anchor-id="extension---analysis-by-country">Extension - Analysis By Country</h2>
+<p>Having looked at the world data, an obvious interesting question is: Which countries are most equal? Are there any countries in which mothers have greater education levels than fathers on average? To do this I first have to convert the ISCED data into numeric levels so “Level 3.4” becomes simply the number 3. Then for each pupil I subtract the mother’s education level from the father’s education level to get a difference in education, with zero meaning no difference, a positive number meaning the father has a higher education level than the mother, and a negative number meaning the mother has a higher education level than the father. I then group by country and get the country mean for each country. I then print out every 4th country including the first and last country in the ordered list.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(c5<span class="sc">$</span>MOTHERED) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(c5<span class="sc">$</span>FATHERED) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>c5_means<span class="ot">&lt;-</span>c5 <span class="sc">%&gt;%</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">MOTHERED_numeric =</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(MOTHERED))) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">FATHERED_numeric =</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(FATHERED))) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">parent_diff =</span> FATHERED_numeric <span class="sc">-</span> MOTHERED_numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_diff =</span> <span class="fu">mean</span>(parent_diff)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(mean_diff)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>rows_to_print <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">79</span>, <span class="at">by =</span> <span class="dv">4</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="dv">79</span> <span class="sc">%in%</span> rows_to_print) {</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  rows_to_print <span class="ot">&lt;-</span> <span class="fu">c</span>(rows_to_print, <span class="dv">79</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>selected_rows <span class="ot">&lt;-</span> c5_means[rows_to_print, ]</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#print(selected_rows, n = 100)</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># To make a nice looking table</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>selected_rows <span class="sc">%&gt;%</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(mean_diff, <span class="at">decimals=</span><span class="dv">4</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Country Equality, Small Selection"</span>,</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Countries with better educated mothers have negative values, countries with better educated fathers have positive values."</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">CNT =</span> <span class="st">"Country"</span>,</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_diff =</span> <span class="st">"Parental Education Difference"</span>,</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add more columns as needed</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="smhembcnve" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#smhembcnve table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#smhembcnve thead, #smhembcnve tbody, #smhembcnve tfoot, #smhembcnve tr, #smhembcnve td, #smhembcnve th {
+  border-style: none;
+}
+
+#smhembcnve p {
+  margin: 0;
+  padding: 0;
+}
+
+#smhembcnve .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#smhembcnve .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#smhembcnve .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#smhembcnve .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#smhembcnve .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#smhembcnve .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#smhembcnve .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#smhembcnve .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#smhembcnve .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#smhembcnve .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#smhembcnve .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#smhembcnve .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#smhembcnve .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#smhembcnve .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#smhembcnve .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#smhembcnve .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#smhembcnve .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#smhembcnve .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#smhembcnve .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#smhembcnve .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#smhembcnve .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#smhembcnve .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#smhembcnve .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#smhembcnve .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#smhembcnve .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#smhembcnve .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#smhembcnve .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#smhembcnve .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#smhembcnve .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#smhembcnve .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#smhembcnve .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#smhembcnve .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#smhembcnve .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#smhembcnve .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#smhembcnve .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#smhembcnve .gt_left {
+  text-align: left;
+}
+
+#smhembcnve .gt_center {
+  text-align: center;
+}
+
+#smhembcnve .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#smhembcnve .gt_font_normal {
+  font-weight: normal;
+}
+
+#smhembcnve .gt_font_bold {
+  font-weight: bold;
+}
+
+#smhembcnve .gt_font_italic {
+  font-style: italic;
+}
+
+#smhembcnve .gt_super {
+  font-size: 65%;
+}
+
+#smhembcnve .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#smhembcnve .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#smhembcnve .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#smhembcnve .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#smhembcnve .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#smhembcnve .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#smhembcnve .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="2" class="gt_heading gt_title gt_font_normal" style="">Country Equality, Small Selection</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Countries with better educated mothers have negative values, countries with better educated fathers have positive values.</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Country">Country</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Parental Education Difference">Parental Education Difference</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="CNT" class="gt_row gt_center">Türkiye</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.3976</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Cambodia</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.1981</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Qatar</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.1418</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Viet Nam</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.0689</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Kazakhstan</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.0225</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Montenegro</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0102</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Austria</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0229</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Brunei Darussalam</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0355</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">United States</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0528</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Thailand</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0657</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Republic of Moldova</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0845</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Palestinian Authority</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0956</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Greece</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1146</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Latvia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1303</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Mongolia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1556</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Australia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1661</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Italy</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1724</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Ukrainian regions (18 of 27)</td>
+<td headers="mean_diff" class="gt_row gt_right">0.2008</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Spain</td>
+<td headers="mean_diff" class="gt_row gt_right">0.2310</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Uruguay</td>
+<td headers="mean_diff" class="gt_row gt_right">0.2577</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Portugal</td>
+<td headers="mean_diff" class="gt_row gt_right">0.2982</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>I find this quite surprising. If you had asked me before conducting my analysis “which country has the most significant educational disparity where fathers are more educated than mothers?” I wouldn’t have guessed Portugal. Yet, my findings show that, Portugal exhibits the largest gap in favour of fathers’ educational attainment, however Portugal scores highly in the world economic forum’s measure of gender equality, WEF GGGI <span class="citation" data-cites="genderea">[@genderea]</span>.</p>
+<p>Turkey having the greatest educational attainment gap in favour of mothers is also surprising and perhaps works against our preconceptions related to gender equality particularly given it is a fairly low scoring country on the WEF GGGI. In fact, if you had asked me “which country has the most educational disparity where mothers are more educated than fathers?” before me doing the analysis I would have almost certainly have said one of the Scandinavian countries would have the greatest equality between father’s and mother’s educational levels in. However, Norway, Sweden, Denmark and Finland all appear well above the median value indicating a less equitable situation than you might guess in fact Iceland which has been in first place for 12 years on the WEF GGGI comes in at 8th worst using this metric. Countries that sometimes face criticism for their lack of equality for women actually score well on this metric, Turkey in 1st place, Morocco in 3rd place, Saudi Arabia in 6th place and Qatar in 9th place for having higher educational outcomes than fathers. I am not sure exactly what to take from this. Perhaps that my metric is not a good one for measuring equality, or provides a narrow view of equality as it compares mothers and fathers rather than women and men. What can be said though is that equality is a multi-faceted issue and one that we must all keep working on and must be wary of viewing it through a purely westernised lens.</p>
+<section id="appendix" class="level3">
+<h3 class="anchored" data-anchor-id="appendix">Appendix</h3>
+<section id="all-countrys-scores" class="level4">
+<h4 class="anchored" data-anchor-id="all-countrys-scores">All Country’s Scores</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(c5<span class="sc">$</span>MOTHERED) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(c5<span class="sc">$</span>FATHERED) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>c5_means<span class="ot">&lt;-</span>c5 <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">MOTHERED_numeric =</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(MOTHERED))) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">FATHERED_numeric =</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(FATHERED))) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">parent_diff =</span> FATHERED_numeric <span class="sc">-</span> MOTHERED_numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_diff =</span> <span class="fu">mean</span>(parent_diff)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(mean_diff)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>rows_to_print <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">79</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="dv">79</span> <span class="sc">%in%</span> rows_to_print) {</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  rows_to_print <span class="ot">&lt;-</span> <span class="fu">c</span>(rows_to_print, <span class="dv">79</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>selected_rows <span class="ot">&lt;-</span> c5_means[rows_to_print, ]</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">#print(selected_rows, n = 100)</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co"># To make a nice looking table</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>selected_rows <span class="sc">%&gt;%</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(mean_diff, <span class="at">decimals=</span><span class="dv">4</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Country Equality, Small Selection"</span>,</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Countries with better educated mothers have negative values, countries with better educated fathers have positive values."</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">CNT =</span> <span class="st">"Country"</span>,</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_diff =</span> <span class="st">"Parental Education Difference"</span>,</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add more columns as needed</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="jmkectkbvp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jmkectkbvp table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#jmkectkbvp thead, #jmkectkbvp tbody, #jmkectkbvp tfoot, #jmkectkbvp tr, #jmkectkbvp td, #jmkectkbvp th {
+  border-style: none;
+}
+
+#jmkectkbvp p {
+  margin: 0;
+  padding: 0;
+}
+
+#jmkectkbvp .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jmkectkbvp .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#jmkectkbvp .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jmkectkbvp .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jmkectkbvp .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jmkectkbvp .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jmkectkbvp .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jmkectkbvp .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jmkectkbvp .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jmkectkbvp .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jmkectkbvp .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jmkectkbvp .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jmkectkbvp .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#jmkectkbvp .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#jmkectkbvp .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jmkectkbvp .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jmkectkbvp .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jmkectkbvp .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jmkectkbvp .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jmkectkbvp .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jmkectkbvp .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jmkectkbvp .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#jmkectkbvp .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jmkectkbvp .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jmkectkbvp .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jmkectkbvp .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jmkectkbvp .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jmkectkbvp .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jmkectkbvp .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jmkectkbvp .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jmkectkbvp .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jmkectkbvp .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jmkectkbvp .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jmkectkbvp .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jmkectkbvp .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jmkectkbvp .gt_left {
+  text-align: left;
+}
+
+#jmkectkbvp .gt_center {
+  text-align: center;
+}
+
+#jmkectkbvp .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jmkectkbvp .gt_font_normal {
+  font-weight: normal;
+}
+
+#jmkectkbvp .gt_font_bold {
+  font-weight: bold;
+}
+
+#jmkectkbvp .gt_font_italic {
+  font-style: italic;
+}
+
+#jmkectkbvp .gt_super {
+  font-size: 65%;
+}
+
+#jmkectkbvp .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#jmkectkbvp .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jmkectkbvp .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jmkectkbvp .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jmkectkbvp .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jmkectkbvp .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jmkectkbvp .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="2" class="gt_heading gt_title gt_font_normal" style="">Country Equality, Small Selection</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Countries with better educated mothers have negative values, countries with better educated fathers have positive values.</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Country">Country</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Parental Education Difference">Parental Education Difference</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="CNT" class="gt_row gt_center">Türkiye</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.2320</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Peru</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.2236</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Morocco</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.2018</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Kosovo</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.1834</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Uzbekistan</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.1285</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Saudi Arabia</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.1201</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Cambodia</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.1157</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Qatar</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.1101</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Guatemala</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.0987</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">El Salvador</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.0957</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Hong Kong (China)</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.0805</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Bulgaria</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.0618</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Viet Nam</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.0479</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Baku (Azerbaijan)</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.0324</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Kazakhstan</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.0226</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Indonesia</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.0212</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Korea</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.0174</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Chinese Taipei</td>
+<td headers="mean_diff" class="gt_row gt_right">−0.0114</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Mexico</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0086</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">North Macedonia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0107</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Montenegro</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0122</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Singapore</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0128</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">United Arab Emirates</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0139</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Macao (China)</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0146</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Paraguay</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0224</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Switzerland</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0271</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Canada</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0272</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Romania</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0285</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Austria</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0300</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Brunei Darussalam</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0315</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Georgia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0357</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Slovak Republic</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0385</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Thailand</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0493</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">United States</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0500</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Jordan</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0528</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Japan</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0530</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Germany</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0566</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Philippines</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0621</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Chile</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0625</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Malaysia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0728</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Republic of Moldova</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0748</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Serbia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0804</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Poland</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0827</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Czech Republic</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0857</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Palestinian Authority</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0860</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Panama</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0933</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Hungary</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0937</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Greece</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0982</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Netherlands</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0992</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Croatia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.0994</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">France</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1038</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Mongolia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1090</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Israel</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1162</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Belgium</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1277</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Slovenia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1314</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Estonia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1335</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Latvia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1340</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Jamaica</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1357</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Colombia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1419</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Lithuania</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1462</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Malta</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1534</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Norway</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1597</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Sweden</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1621</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Australia</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1621</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Italy</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1640</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Finland</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1655</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Denmark</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1672</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">United Kingdom</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1714</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Brazil</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1748</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Uruguay</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1760</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Argentina</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1789</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">New Zealand</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1896</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Ukrainian regions (18 of 27)</td>
+<td headers="mean_diff" class="gt_row gt_right">0.1919</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Spain</td>
+<td headers="mean_diff" class="gt_row gt_right">0.2017</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Iceland</td>
+<td headers="mean_diff" class="gt_row gt_right">0.2200</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Albania</td>
+<td headers="mean_diff" class="gt_row gt_right">0.2287</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Ireland</td>
+<td headers="mean_diff" class="gt_row gt_right">0.2294</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Dominican Republic</td>
+<td headers="mean_diff" class="gt_row gt_right">0.2300</td></tr>
+    <tr><td headers="CNT" class="gt_row gt_center">Portugal</td>
+<td headers="mean_diff" class="gt_row gt_right">0.2312</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
