@@ -169,8 +169,29 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+</div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1709622259078" data-listing-reading-time-sort="4">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1709596800000" data-listing-file-modified-sort="1709635773083" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
 <div class="thumbnail">
 <p><a href="./posts/PISAtrends/PISAtrends.html"> <p class="card-img-top"><img src="posts/PISAtrends/PISAdecline.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -189,63 +210,16 @@ I noticed from the PISA results that the Science scores appear to be decreasing.
 </div>
 <div class="metadata">
 <a href="./posts/PISAtrends/PISAtrends.html">
+<div class="listing-date">
+Mar 5, 2024
+</div>
 <div class="listing-author">
 Katy Bray
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1707738898604" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/USUKMaths/USUKMaths.html"> <p class="card-img-top"><img src="posts/USUKMaths/USUKMaths_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/USUKMaths/USUKMaths.html">
-<h3 class="no-anchor listing-title">
-Differences in PISA mathematics scores in the US and UK
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-In this graph, we compare the PISA Math scores for two countries, the United Kingdom and the United States, and filter them by gender.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/USUKMaths/USUKMaths.html">
-<div class="listing-author">
-Manasi Rajan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1707292466547" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/GenderKaty/GenderKaty.html"> <p class="card-img-top"><img src="posts/GenderKaty/GenderKaty_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/GenderKaty/GenderKaty.html">
-<h3 class="no-anchor listing-title">
-Gender differences in PISA
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-I wanted to compare the maths and reading scores and then the science and maths scores and see if there were any gender differences. As expected for both comparisons there…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/GenderKaty/GenderKaty.html">
-<div class="listing-author">
-Katy Bray
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1709317735543" data-listing-reading-time-sort="7">
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1709251200000" data-listing-file-modified-sort="1709635755862" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
 <div class="thumbnail">
 <p><a href="./posts/PaternalEducation/PaternalEducation.html"> <p class="card-img-top"><img src="posts/PaternalEducation/PaternalEducation_files/figure-html/mosaic-1.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -264,13 +238,72 @@ This post looks into the differences between mother’s and father’s…
 </div>
 <div class="metadata">
 <a href="./posts/PaternalEducation/PaternalEducation.html">
+<div class="listing-date">
+Mar 1, 2024
+</div>
 <div class="listing-author">
 Owen James-Gray
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1706462172596" data-listing-reading-time-sort="12">
+<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1707696000000" data-listing-file-modified-sort="1709635896004" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="thumbnail">
+<p><a href="./posts/USUKMaths/USUKMaths.html"> <p class="card-img-top"><img src="posts/USUKMaths/USUKMaths_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
+</div>
+<div class="body">
+<a href="./posts/USUKMaths/USUKMaths.html">
+<h3 class="no-anchor listing-title">
+Differences in PISA mathematics scores in the US and UK
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+In this graph, we compare the PISA Math scores for two countries, the United Kingdom and the United States, and filter them by gender.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/USUKMaths/USUKMaths.html">
+<div class="listing-date">
+Feb 12, 2024
+</div>
+<div class="listing-author">
+Manasi Rajan
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1707264000000" data-listing-file-modified-sort="1709635947146" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="thumbnail">
+<p><a href="./posts/GenderKaty/GenderKaty.html"> <p class="card-img-top"><img src="posts/GenderKaty/GenderKaty_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
+</div>
+<div class="body">
+<a href="./posts/GenderKaty/GenderKaty.html">
+<h3 class="no-anchor listing-title">
+Gender differences in PISA
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+I wanted to compare the maths and reading scores and then the science and maths scores and see if there were any gender differences. As expected for both comparisons there…
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/GenderKaty/GenderKaty.html">
+<div class="listing-date">
+Feb 7, 2024
+</div>
+<div class="listing-author">
+Katy Bray
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1706054400000" data-listing-file-modified-sort="1709635654591" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12">
 <div class="thumbnail">
 <p><a href="./posts/Working Graph/Working Graph.html"> <p class="card-img-top"><img src="posts/Working Graph/Working-Graph_files/figure-html/unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -289,6 +322,9 @@ Looking through the questions asked on the <code>PISA_2022</code> dataset I saw 
 </div>
 <div class="metadata">
 <a href="./posts/Working Graph/Working Graph.html">
+<div class="listing-date">
+Jan 24, 2024
+</div>
 <div class="listing-author">
 Owen James-Gray
 </div>
