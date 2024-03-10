@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Katy Bray">
-<meta name="dcterms.date" content="2024-03-07">
+<meta name="dcterms.date" content="2024-03-10">
 
 <title>mastemquantblog - Trends in PISA science scores</title>
 <style>
@@ -178,7 +178,7 @@ div.csl-indent {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 7, 2024</p>
+        <p class="date">March 10, 2024</p>
       </div>
     </div>
     
@@ -200,7 +200,7 @@ div.csl-indent {
 <h1>Trends in PISA science scores</h1>
 <p>I noticed from the PISA results that the Science scores appear to be decreasing, since 2006.</p>
 <p><img src="PISAdecline.png" class="img-fluid" data-fig-align="center"> <span class="citation" data-cites="PISA2023">(<a href="#ref-PISA2023" role="doc-biblioref">OECD 2023b, 471</a>)</span></p>
-<p>I wanted to know whether this trend was statistically significant. So I set about completing some unpaired t-tests and an anova test. This was using PISA data from 2009, 2015, 2018, and 2022.</p>
+<p>I wanted to know whether this trend was statistically significant. So I set about completing an anova test. This was using PISA data from 2009, 2015, 2018, and 2022.</p>
 <p>First, I checked that the data was normally distributed. For all four data sets this was shown to be true.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> UKSCI2009 <span class="ot">&lt;-</span>PISA_2009 <span class="sc">%&gt;%</span> </span>
@@ -239,7 +239,7 @@ div.csl-indent {
 <p><img src="PISAtrends_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>I then wanted to complete a t-test comparing the 2022 and 2018, the 2022 and 2015 and also the 2022 and 2009 data sets. Therefore I checked the variances of each of the pairs of data sets.</p>
+<p>I then checked the variances of each of the pairs of data sets.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>VarM <span class="ot">&lt;-</span> <span class="fu">var</span>(UKSCI2022<span class="sc">$</span>PV1SCIE, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -266,9 +266,9 @@ div.csl-indent {
 <pre><code>[1] 1.083176</code></pre>
 </div>
 </div>
-<p>The variance ratio was close to 1, for all pairs, so the two conditions were met and so I could then perform the t test. I started with looking at the 2018 and 2022 PISA data.</p>
-<p>The null hypothesis would be that the mean of both 2018 and 2022 would be the same, with the alternative hypothesis being statically different.</p>
-<p>Since I had 4 sets of PISA data, and therefore wanted to perform multiple t-tests for these different dates. I then completed an anova test.</p>
+<p>The variance ratio was close to 1, for all pairs, so the two conditions were met and so I could then perform the anova test.</p>
+<p>The null hypothesis would be that the mean of PV1SCIE for all the years would be the same, with the alternative hypothesis being statically different.</p>
+<p>Since I had 4 sets of PISA data, this meant that I wanted to perform multiple t-tests, so therefore I completed an anova test.</p>
 <section id="anova-test" class="level2">
 <h2 class="anchored" data-anchor-id="anova-test">Anova test</h2>
 <div class="cell">
@@ -283,9 +283,9 @@ Residuals   53122 508920819    9580
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<p>The Pr(&gt;F) value is &lt;2e-16 which is over 0.05. This therefore suggests that the PV1Sci values are statistically different.</p>
+<p>The Pr(&gt;F) value is &lt;2e-16 which is over 0.05. This suggests that the PV1SCIE values are statistically different.</p>
 <p>My question is: Why is it that there is a difference in the PV1SCIE scores. Why are they going down? What are the factors that could be causing this?</p>
-<p>To further look at the results I ran a Tukey Test following on from the Anova. A Tukey Test can be used to determine which years have significant differences, in this case the mean PV1SCI scores in the UK.</p>
+<p>To further look at the results I ran a Tukey Test following on from the Anova. A Tukey Test can be used to determine which years have significant differences, in this case the mean PV1SCIE scores in the UK.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(result) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
