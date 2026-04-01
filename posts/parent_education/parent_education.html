@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Witney Hu">
+<meta name="author" content="Wenxuan Hu">
 <meta name="dcterms.date" content="2026-03-25">
 
 <title>Parental Education and Children’s Reading Achievement – mastemquantblog</title>
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -118,18 +153,18 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
+    <div class="quarto-title column-body">
       <h1 class="title">Parental Education and Children’s Reading Achievement</h1>
                       </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page">
+  <div class="quarto-title-meta column-body">
 
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Witney Hu </p>
+               <p>Wenxuan Hu </p>
             </div>
     </div>
       
@@ -149,38 +184,212 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full column-body" id="quarto-document-content">
 
 
 
 
 
-<section id="parental-education-and-childrens-reading-achievement" class="level1">
+<section id="parental-education-and-childrens-reading-achievement" class="level1 page-columns page-full">
 <h1>Parental Education and Children’s Reading Achievement</h1>
 <p>Students’ reading achievement is shaped by many factors, but family background remains one of the most important. In particular, parents’ educational level is often linked to children’s learning opportunities and academic performance. In this post, I explore the relationship between parental education and reading scores through a comparison of Ireland, Korea, and Singapore, asking whether students with more highly educated parents tend to achieve higher reading outcomes across different national contexts.</p>
+<div class="cell page-columns page-full">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(arrow)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(colorspace)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggpubr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggrepel)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(knitr)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">library</span>(tidyverse)})</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"/Users/k1765032/Library/CloudStorage/OneDrive-King'sCollegeLondon/QERKCL_PISA/data/pisa/2022/PISA_student_2022.parquet"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># select three max mean reading scores countries: Singapore, Korea, Ireland</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>max_mean_reading_score <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_read =</span> <span class="fu">mean</span>(PV1READ)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(mean_read, <span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># no recording of Singapore's mother study level is &lt;ISCED level 3.4&gt;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>new <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Singapore"</span>, ST005Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 3.4&gt;"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>mather_level<span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(CNT, ST005Q01JA,ST255Q01JA, PV1READ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ST005Q01JA), <span class="sc">!</span><span class="fu">is.na</span>(ST255Q01JA))<span class="sc">%&gt;%</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( CNT <span class="sc">==</span> <span class="st">"Singapore"</span><span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Korea"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Ireland"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">mather_edu_num =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>      ST005Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 3.4&gt;"</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>      ST005Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 3.3&gt;"</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>      ST005Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 2&gt;"</span>   <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>      ST005Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 1&gt;"</span>   <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>      ST005Q01JA <span class="sc">==</span> <span class="st">"She did not complete &lt;ISCED level 1&gt;."</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>      ST005Q01JA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Valid Skip"</span>, <span class="st">"Not Applicable"</span>, <span class="st">"Invalid"</span>, <span class="st">"No Response"</span>) <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>father_level<span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(CNT, ST007Q01JA,ST255Q01JA,PV1READ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ST007Q01JA), <span class="sc">!</span><span class="fu">is.na</span>(ST255Q01JA))<span class="sc">%&gt;%</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( CNT <span class="sc">==</span> <span class="st">"Singapore"</span><span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Korea"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Ireland"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">father_edu_num =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>      ST007Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 3.4&gt;"</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>      ST007Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 3.3&gt;"</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>      ST007Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 2&gt;"</span>   <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>      ST007Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 1&gt;"</span>   <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>      ST007Q01JA <span class="sc">==</span> <span class="st">"He did not complete &lt;ISCED level 1&gt;."</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>      ST007Q01JA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Valid Skip"</span>, <span class="st">"Not Applicable"</span>, <span class="st">"Invalid"</span>, <span class="st">"No Response"</span>) <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co">#define colour</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>morandi5_plus <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">"0"</span> <span class="ot">=</span> <span class="st">"#f5f2cd"</span>,  </span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"#c0ecd0"</span>,  </span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"#c0e1ec"</span>, </span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"#dcd6f0"</span>, </span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"#ffebe6"</span>   </span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mather_level, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(mather_edu_num), <span class="at">y =</span> PV1READ, <span class="at">fill =</span> <span class="fu">factor</span>(mather_edu_num))) <span class="sc">+</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>, <span class="at">adjust =</span> <span class="fl">0.6</span>, <span class="at">width =</span> <span class="fl">0.7</span>,<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">outlier.alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> CNT) <span class="sc">+</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Mother education (0–4)"</span>, <span class="at">y =</span> <span class="st">"Reading score"</span>) <span class="sc">+</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> morandi5_plus, <span class="at">name =</span> <span class="st">"Mother edu (0–4)"</span>) <span class="sc">+</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full">
+<p class="page-columns page-full"><img src="parent_education_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img column-page" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 <section id="coding-parental-education" class="level2">
 <h2 class="anchored" data-anchor-id="coding-parental-education">Coding parental education</h2>
 <p>To make parental education easier to compare, I recoded both maternal and paternal education into a five-category scale, ranging from 0 (“did not complete ISCED level 1”) to 4 (“ISCED level 3.4”). Figure 1 presents mothers’ and fathers’ education separately for Ireland, Korea, and Singapore. Across all three countries, higher parental education is generally associated with higher reading scores. Showing fathers and mothers separately is useful because it highlights whether the relationship follows a similar pattern for each parent, while also allowing for clearer cross-country comparison.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Figure_1.png" class="img-fluid figure-img"></p>
-<figcaption>Figure1</figcaption>
-</figure>
-</div>
 </section>
-<section id="a-simplified-comparison" class="level2">
+<section id="a-simplified-comparison" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="a-simplified-comparison">A simplified comparison</h2>
 <p>Figure 2 compares students’ reading scores using the highest level of parental education within the family. Across Ireland, Korea, and Singapore, students from families with higher parental education generally achieve higher reading scores, although the size of this difference varies across countries.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Figure_2.png" class="img-fluid figure-img"></p>
-<figcaption>Figure2</figcaption>
+<div class="cell page-columns page-full">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(arrow)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(colorspace)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggpubr)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggrepel)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(knitr)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>books_edu<span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(CNT, ST005Q01JA,ST007Q01JA,ST255Q01JA,PV1READ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ST005Q01JA), <span class="sc">!</span><span class="fu">is.na</span>(ST255Q01JA), <span class="sc">!</span><span class="fu">is.na</span>(ST007Q01JA))<span class="sc">%&gt;%</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( CNT <span class="sc">==</span> <span class="st">"Singapore"</span><span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Korea"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Ireland"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">mother_edu_num =</span> <span class="fu">case_when</span>(</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      ST005Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 3.4&gt;"</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      ST005Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 3.3&gt;"</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>      ST005Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 2&gt;"</span>   <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      ST005Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 1&gt;"</span>   <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      ST005Q01JA <span class="sc">==</span> <span class="st">"She did not complete &lt;ISCED level 1&gt;."</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      ST005Q01JA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Valid Skip"</span>, <span class="st">"Not Applicable"</span>, <span class="st">"Invalid"</span>, <span class="st">"No Response"</span>) <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">father_edu_num =</span> <span class="fu">case_when</span>(</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>      ST007Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 3.4&gt;"</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>      ST007Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 3.3&gt;"</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>      ST007Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 2&gt;"</span>   <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>      ST007Q01JA <span class="sc">==</span> <span class="st">"&lt;ISCED level 1&gt;"</span>   <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>      ST007Q01JA <span class="sc">==</span> <span class="st">"He did not complete &lt;ISCED level 1&gt;."</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>      ST007Q01JA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Valid Skip"</span>, <span class="st">"Not Applicable"</span>, <span class="st">"Invalid"</span>, <span class="st">"No Response"</span>) <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span>),</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">parent_edu_max =</span> <span class="fu">pmax</span>(mother_edu_num, father_edu_num),</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">parent_edu_min =</span> <span class="fu">pmin</span>(mother_edu_num, father_edu_num)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(books_edu, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(parent_edu_max), <span class="at">fill =</span> ST255Q01JA)) <span class="sc">+</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>) <span class="sc">+</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span> CNT) <span class="sc">+</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Education level (0–4)"</span>, <span class="at">y =</span> <span class="st">"Count"</span>, <span class="at">fill =</span> <span class="st">"Books at home"</span>) <span class="sc">+</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full">
+<p class="page-columns page-full"><img src="parent_education_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img column-page" style="width:100.0%"></p>
 </figure>
 </div>
+</div>
+</div>
 </section>
-<section id="parental-education-and-home-literacy-resources" class="level2">
+<section id="parental-education-and-home-literacy-resources" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="parental-education-and-home-literacy-resources">Parental Education and Home Literacy Resources</h2>
-<p>Figure 3 explores the association between the highest parental education level in the household and the number of books at home. In general, higher parental education is linked to a greater number of books, which may reflect differences in home literacy resources across families. <img src="Figure_3.png" class="img-fluid" alt="Figure3"></p>
+<p>Figure 3 explores the association between the highest parental education level in the household and the number of books at home. In general, higher parental education is linked to a greater number of books, which may reflect differences in home literacy resources across families.</p>
+<div class="cell page-columns page-full">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(father_level, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(father_edu_num), <span class="at">y =</span> PV1READ, <span class="at">fill =</span> <span class="fu">factor</span>(father_edu_num))) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>, <span class="at">adjust =</span> <span class="dv">1</span>, <span class="at">width =</span> <span class="fl">0.7</span>,<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">outlier.alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> CNT) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Father education (0–4)"</span>, <span class="at">y =</span> <span class="st">"Reading score"</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> morandi5_plus, <span class="at">name =</span> <span class="st">"Father edu (0–4)"</span>) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full">
+<p class="page-columns page-full"><img src="parent_education_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img column-page" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>edu_long <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  mather_level <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">transmute</span>(CNT, <span class="at">parent =</span> <span class="st">"Mother"</span>, <span class="at">edu_num =</span> mather_edu_num, PV1READ),</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  father_level <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">transmute</span>(CNT, <span class="at">parent =</span> <span class="st">"Father"</span>, <span class="at">edu_num =</span> father_edu_num, PV1READ)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(edu_long, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(edu_num), <span class="at">y =</span> PV1READ, <span class="at">fill =</span> <span class="fu">factor</span>(edu_num))) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>, <span class="at">adjust =</span> <span class="fl">0.7</span>, <span class="at">width =</span> <span class="fl">0.95</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span><span class="co">#adjust = 1, width = 0.7, alpha = 0.5</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">outlier.alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span><span class="co">#fill = "white"</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(parent <span class="sc">~</span> CNT) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Education level (0–4)"</span>, <span class="at">y =</span> <span class="st">"Reading score"</span>, <span class="at">fill =</span> <span class="st">"Edu (0–4)"</span>) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> morandi5_plus) <span class="sc">+</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full">
+<p class="page-columns page-full"><img src="parent_education_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img column-page" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(books_edu, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(parent_edu_max), <span class="at">y =</span> PV1READ, <span class="at">fill =</span> <span class="fu">factor</span>(parent_edu_max))) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>, <span class="at">adjust =</span> <span class="dv">1</span>, <span class="at">width =</span> <span class="fl">0.95</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span><span class="co">#adjust = 1, width = 0.7, alpha = 0.5</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">outlier.alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span><span class="co">#fill = "white"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span> CNT) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Highest education level (0–4)"</span>, <span class="at">y =</span> <span class="st">"Reading score"</span>, <span class="at">fill =</span> <span class="st">"Edu (0–4)"</span>) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> morandi5_plus) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full">
+<p class="page-columns page-full"><img src="parent_education_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid figure-img column-page" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="limitations" class="level2">
 <h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
